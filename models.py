@@ -2,10 +2,10 @@
 # begin
 
 from flask.ext.sqlalchemy import SQLAlchemy
+from datetime import *
+from todoapp import app
 
-app = Flask(__name__)
 db = SQLAlchemy(app)
-
 
 
 class Todo (db.Model):
@@ -14,8 +14,8 @@ class Todo (db.Model):
     category_id = db.Column('category_id', db.Integer, db.ForeignKey('category.id'))
     priority_id = db.Column('priority_id', db.Integer, db.ForeignKey('priority.id'))
     description = db.Column('description', db.Unicode)
-    creation_date = db.Column('creation_date', db.Date)
-    is_done = db.Column('is_done', db.Boolean)
+    creation_date = db.Column('creation_date', db.Date, default=datetime.utcnow)
+    is_done = db.Column('is_done', db.Boolean, default=False)
 
     priority = db.relationship('Priority', foreign_keys=priority_id)
     category = db.relationship('Category', foreign_keys=category_id)
