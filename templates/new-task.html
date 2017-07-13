@@ -1,0 +1,19 @@
+<h3>My Todos</h3>
+<table>
+	<tr>
+		<th>#</th>
+		<th>Description</th>
+		<th>Category</th>
+		<th>Priority</th>
+		<th>Creation date</th>
+	</tr>
+	{%- for todo in todos %}
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ todo.description }}</td>
+			<td>{{ todo.category.name }}</td>
+			<td> {{ todo.priority.name }}</td>
+			<td>{{ todo.creation_date }}</td>
+		</tr>
+	{%- endfor %}
+</table>

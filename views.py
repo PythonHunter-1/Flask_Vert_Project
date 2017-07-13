@@ -32,7 +32,7 @@ def update_todo(todo_id):
 	todo = Todo.query.get(todo_id)
 	if request.method == 'GET':
 		return render_template(
-			'new_task.html',
+			'new-task.html',
 			todo=todo,
 			categories=Category.query.all(),
 			priorities=Priority.query.all()
